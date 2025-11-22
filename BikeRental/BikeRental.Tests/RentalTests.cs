@@ -1,15 +1,15 @@
-using BikeRental.Domain.Data;
+п»їusing BikeRental.Domain.Data;
 using BikeRental.Domain.Enums;
 
 namespace BikeRental.Tests;
 
 /// <summary>
-/// Набор тестов для доменной области
+/// РќР°Р±РѕСЂ С‚РµСЃС‚РѕРІ РґР»СЏ РґРѕРјРµРЅРЅРѕР№ РѕР±Р»Р°СЃС‚Рё
 /// </summary>
 public class RentalTests(DataSeeder data) : IClassFixture<DataSeeder>
 {
     /// <summary>
-    /// Вывести информацию обо всех спортивных велосипедах (Road и Mountain)
+    /// Р’С‹РІРµСЃС‚Рё РёРЅС„РѕСЂРјР°С†РёСЋ РѕР±Рѕ РІСЃРµС… СЃРїРѕСЂС‚РёРІРЅС‹С… РІРµР»РѕСЃРёРїРµРґР°С… (Road Рё Mountain)
     /// </summary>
     [Fact]
     public void GetAllSportBikes()
@@ -25,7 +25,7 @@ public class RentalTests(DataSeeder data) : IClassFixture<DataSeeder>
     }
 
     /// <summary>
-    /// Вывести топ 5 моделей по прибыли от аренды
+    /// Р’С‹РІРµСЃС‚Рё С‚РѕРї 5 РјРѕРґРµР»РµР№ РїРѕ РїСЂРёР±С‹Р»Рё РѕС‚ Р°СЂРµРЅРґС‹
     /// </summary>
     [Fact]
     public void GetTop5ModelsByProfit()
@@ -46,7 +46,7 @@ public class RentalTests(DataSeeder data) : IClassFixture<DataSeeder>
     }
 
     /// <summary>
-    /// Вывести топ 5 моделей по суммарной длительности аренды
+    /// Р’С‹РІРµСЃС‚Рё С‚РѕРї 5 РјРѕРґРµР»РµР№ РїРѕ СЃСѓРјРјР°СЂРЅРѕР№ РґР»РёС‚РµР»СЊРЅРѕСЃС‚Рё Р°СЂРµРЅРґС‹
     /// </summary>
     [Fact]
     public void GetTop5ModelsByRentalDuration()
@@ -67,7 +67,7 @@ public class RentalTests(DataSeeder data) : IClassFixture<DataSeeder>
     }
 
     /// <summary>
-    /// Вывести минимальное, максимальное и среднее время аренды
+    /// Р’С‹РІРµСЃС‚Рё РјРёРЅРёРјР°Р»СЊРЅРѕРµ, РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ Рё СЃСЂРµРґРЅРµРµ РІСЂРµРјСЏ Р°СЂРµРЅРґС‹
     /// </summary>
     [Fact]
     public void GetMinMaxAvgRentalTime()
@@ -86,7 +86,7 @@ public class RentalTests(DataSeeder data) : IClassFixture<DataSeeder>
     }
 
     /// <summary>
-    /// Суммарное время аренды велосипедов каждого типа
+    /// РЎСѓРјРјР°СЂРЅРѕРµ РІСЂРµРјСЏ Р°СЂРµРЅРґС‹ РІРµР»РѕСЃРёРїРµРґРѕРІ РєР°Р¶РґРѕРіРѕ С‚РёРїР°
     /// </summary>
     [Fact]
     public void GetSumRentalTimeByBikeType()
@@ -107,7 +107,7 @@ public class RentalTests(DataSeeder data) : IClassFixture<DataSeeder>
     }
 
     /// <summary>
-    /// Вывести клиентов, бравших велосипеды больше всего раз
+    /// Р’С‹РІРµСЃС‚Рё РєР»РёРµРЅС‚РѕРІ, Р±СЂР°РІС€РёС… РІРµР»РѕСЃРёРїРµРґС‹ Р±РѕР»СЊС€Рµ РІСЃРµРіРѕ СЂР°Р·
     /// </summary>
     [Fact]
     public void GetTopRentersByRentCount()
