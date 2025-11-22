@@ -5,6 +5,8 @@ VisualStudioVersion = 17.14.36717.8 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRental.Domain", "BikeRental.Domain\BikeRental.Domain.csproj", "{D9127BCC-B84C-4765-B97C-5F75CF27306D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRental.Tests", "BikeRental.Tests\BikeRental.Tests.csproj", "{44367407-CDA9-4EA0-8C12-CDE27CA2EECA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D9127BCC-B84C-4765-B97C-5F75CF27306D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9127BCC-B84C-4765-B97C-5F75CF27306D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9127BCC-B84C-4765-B97C-5F75CF27306D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44367407-CDA9-4EA0-8C12-CDE27CA2EECA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44367407-CDA9-4EA0-8C12-CDE27CA2EECA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44367407-CDA9-4EA0-8C12-CDE27CA2EECA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44367407-CDA9-4EA0-8C12-CDE27CA2EECA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
