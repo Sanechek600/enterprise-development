@@ -30,7 +30,7 @@ public class BikeModel
     /// <summary>
     /// Вес велосипеда в килограммах
     /// </summary>
-    public double? BikeWeight { get; set; }
+    public int? BikeWeight { get; set; }
 
     /// <summary>
     /// Тип тормозов
