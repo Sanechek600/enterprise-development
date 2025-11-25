@@ -38,5 +38,5 @@ public class RentalRecord
     /// <summary>
     /// Продолжительность аренды в часах
     /// </summary>
-    public TimeSpan? Duration { get; set; }
+    public required TimeSpan Duration { get; set; }
 }

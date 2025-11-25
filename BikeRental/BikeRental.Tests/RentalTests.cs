@@ -36,7 +36,7 @@ public class RentalTests(DataSeeder data) : IClassFixture<DataSeeder>
                 Model = model,
                 Profit = model.Bikes!
                     .SelectMany(b => b.RentalRecords!)
-                    .Sum(r => (decimal)(r.Duration?.TotalHours ?? 0.0) * model.HourlyPrice)
+                    .Sum(r => (decimal)r.Duration.TotalHours * model.HourlyPrice)
             })
             .OrderByDescending(x => x.Profit)
             .Take(5)
@@ -58,7 +58,7 @@ public class RentalTests(DataSeeder data) : IClassFixture<DataSeeder>
                 Model = model,
                 TotalHours = model.Bikes!
                     .SelectMany(b => b.RentalRecords!)
-                    .Sum(r => r.Duration?.TotalHours ?? 0.0)
+                    .Sum(r => r.Duration.TotalHours)
             })
             .OrderByDescending(x => x.TotalHours)
             .Take(5)
@@ -74,7 +74,7 @@ public class RentalTests(DataSeeder data) : IClassFixture<DataSeeder>
     public void GetMinMaxAvgRentalTime()
     {
         var durations = data.RentalRecords
-            .Select(r => r.Duration?.TotalHours ?? 0.0)
+            .Select(r => r.Duration.TotalHours)
             .ToList();
 
         var min = durations.Min();
@@ -99,7 +99,7 @@ public class RentalTests(DataSeeder data) : IClassFixture<DataSeeder>
                 Type = g.Key,
                 TotalHours = g.SelectMany(m => m.Bikes!)
                               .SelectMany(b => b.RentalRecords!)
-                              .Sum(r => r.Duration?.TotalHours ?? 0.0)
+                              .Sum(r => r.Duration.TotalHours)
             })
             .ToList();
 

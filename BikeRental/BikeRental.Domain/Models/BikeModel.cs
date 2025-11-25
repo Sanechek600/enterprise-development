@@ -25,12 +25,12 @@ public class BikeModel
     /// <summary>
     /// Предельно допустимый вес пассажира в килограммах
     /// </summary>
-    public required int MaxRiderWeight { get; set; }
+    public required double MaxRiderWeight { get; set; }
 
     /// <summary>
     /// Вес велосипеда в килограммах
     /// </summary>
-    public int? BikeWeight { get; set; }
+    public double? BikeWeight { get; set; }
 
     /// <summary>
     /// Тип тормозов
