@@ -81,6 +81,8 @@ public class RentalRecordService(
 
         mapper.Map(dto, entity);
 
+        entity.BikeId = dto.BikeId;
+
         var updated = await rentalRecordRepository.Update(entity);
         return mapper.Map<RentalRecordDto>(updated);
     }

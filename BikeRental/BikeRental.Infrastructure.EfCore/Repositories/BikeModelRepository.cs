@@ -31,7 +31,6 @@ public sealed class BikeModelRepository(BikeRentalDbContext db) : IRepository<Bi
     public async Task<BikeModel?> Read(int entityId)
     {
         return await db.BikeModels
-            .AsNoTracking()
             .Include(x => x.Bikes!)
                 .ThenInclude(b => b.RentalRecords!)
                     .ThenInclude(r => r.Renter)
