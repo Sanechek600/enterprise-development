@@ -13,6 +13,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRental.Application.Cont
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRental.Application", "BikeRental.Application\BikeRental.Application.csproj", "{60E4DF46-EEB6-4E7D-987F-CDE69237EEE2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRental.Api.Host", "BikeRental.Api.Host\BikeRental.Api.Host.csproj", "{363BF221-48D2-3C24-A6AD-C455F39B04F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRental.AppHost", "BikeRental.AppHost\BikeRental.AppHost.csproj", "{10260BAF-A86F-43BD-B3B6-A5534C94CC1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRental.ServiceDefaults", "BikeRental.ServiceDefaults\BikeRental.ServiceDefaults.csproj", "{6C958A7B-DFCF-E37F-C7A1-0E738AF54AF6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +45,18 @@ Global
 		{60E4DF46-EEB6-4E7D-987F-CDE69237EEE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60E4DF46-EEB6-4E7D-987F-CDE69237EEE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60E4DF46-EEB6-4E7D-987F-CDE69237EEE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{363BF221-48D2-3C24-A6AD-C455F39B04F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{363BF221-48D2-3C24-A6AD-C455F39B04F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{363BF221-48D2-3C24-A6AD-C455F39B04F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{363BF221-48D2-3C24-A6AD-C455F39B04F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10260BAF-A86F-43BD-B3B6-A5534C94CC1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10260BAF-A86F-43BD-B3B6-A5534C94CC1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10260BAF-A86F-43BD-B3B6-A5534C94CC1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10260BAF-A86F-43BD-B3B6-A5534C94CC1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C958A7B-DFCF-E37F-C7A1-0E738AF54AF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C958A7B-DFCF-E37F-C7A1-0E738AF54AF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C958A7B-DFCF-E37F-C7A1-0E738AF54AF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C958A7B-DFCF-E37F-C7A1-0E738AF54AF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

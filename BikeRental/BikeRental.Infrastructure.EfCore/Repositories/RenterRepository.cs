@@ -50,7 +50,6 @@ public sealed class RenterRepository(BikeRentalDbContext db) : IRepository<Rente
             .Include(x => x.RentalRecords!)
                 .ThenInclude(r => r.Bike)
                     .ThenInclude(b => b!.Model)
-            .OrderBy(x => x.FullName)
             .ToListAsync();
     }
 

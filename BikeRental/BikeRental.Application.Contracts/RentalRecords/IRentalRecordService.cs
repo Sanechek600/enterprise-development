@@ -1,21 +1,21 @@
 ﻿namespace BikeRental.Application.Contracts.RentalRecords;
 
 /// <summary>
-/// Интерфейс службы приложения для получения записей аренды
+/// Интерфейс службы приложения для работы с записями аренды
 /// </summary>
-public interface IRentalRecordService
+public interface IRentalRecordService : IApplicationService<RentalRecordDto, RentalRecordCreateUpdateDto, int>
 {
     /// <summary>
-    /// Возвращает запись аренды по идентификатору арендатора
+    /// Возвращает список записей аренды арендатора
     /// </summary>
     /// <param name="renterId">Идентификатор арендатора</param>
-    /// <returns>DTO записи аренды</returns>
-    public Task<RentalRecordDto> GetRentalRecordByRenterId(int renterId);
+    /// <returns>Список DTO записей аренды</returns>
+    public Task<IList<RentalRecordDto>> GetRentalRecordsByRenterId(int renterId);
 
     /// <summary>
-    /// Возвращает запись аренды по идентификатору велосипеда
+    /// Возвращает список записей аренды велосипеда
     /// </summary>
     /// <param name="bikeId">Идентификатор велосипеда</param>
-    /// <returns>DTO записи аренды</returns>
-    public Task<RentalRecordDto> GetRentalRecordByBikeId(int bikeId);
+    /// <returns>Список DTO записей аренды</returns>
+    public Task<IList<RentalRecordDto>> GetRentalRecordsByBikeId(int bikeId);
 }

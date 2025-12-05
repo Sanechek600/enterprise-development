@@ -1,4 +1,5 @@
-﻿using BikeRental.Domain.Models;
+﻿using BikeRental.Domain.Data;
+using BikeRental.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BikeRental.Infrastructure.EfCore;
@@ -8,27 +9,27 @@ namespace BikeRental.Infrastructure.EfCore;
 /// Содержит DbSet'ы и конфигурацию сущностей (required, длины строк, связи, индексы, ограничения)
 /// </summary>
 /// <param name="options">Настройки контекста EF Core</param>
-public sealed class BikeRentalDbContext(DbContextOptions<BikeRentalDbContext> options) : DbContext(options)
+public sealed class BikeRentalDbContext(DbContextOptions<BikeRentalDbContext> options, DataSeeder seeder) : DbContext(options)
 {
     /// <summary>
     /// Коллекция арендаторов
     /// </summary>
-    public required DbSet<Renter> Renters;
+    public DbSet<Renter> Renters => Set<Renter>();
 
     /// <summary>
     /// Коллекция велосипедов
     /// </summary>
-    public required DbSet<Bike> Bikes;
+    public DbSet<Bike> Bikes => Set<Bike>();
 
     /// <summary>
     /// Коллекция моделей велосипедов
     /// </summary>
-    public required DbSet<BikeModel> BikeModels;
+    public DbSet<BikeModel> BikeModels => Set<BikeModel>();
 
     /// <summary>
     /// Коллекция записей об аренде
     /// </summary>
-    public required DbSet<RentalRecord> RentalRecords;
+    public DbSet<RentalRecord> RentalRecords => Set<RentalRecord>();
 
     /// <summary>
     /// Конфигурирует модель данных EF Core: таблицы, ключи, required, ограничения длины,
@@ -144,6 +145,51 @@ public sealed class BikeRentalDbContext(DbContextOptions<BikeRentalDbContext> op
             b.HasIndex(x => x.StartTime);
         });
 
+        ApplySeed(modelBuilder);
+
         base.OnModelCreating(modelBuilder);
+    }
+
+    /// <summary>
+    /// Добавляет тестовые данные из сидера
+    /// </summary>
+    /// <param name="modelBuilder">Построитель модели</param>
+    private void ApplySeed(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<BikeModel>().HasData(seeder.BikesModel.Select(m => new
+        {
+            m.Id,
+            m.Type,
+            m.WheelSize,
+            m.MaxRiderWeight,
+            m.BikeWeight,
+            m.BrakeType,
+            m.Year,
+            m.HourlyPrice
+        }));
+
+        modelBuilder.Entity<Renter>().HasData(seeder.Renters.Select(r => new
+        {
+            r.Id,
+            r.FullName,
+            r.Phone
+        }));
+
+        modelBuilder.Entity<Bike>().HasData(seeder.Bikes.Select(b => new
+        {
+            b.Id,
+            b.SerialNumber,
+            b.Color,
+            b.ModelId
+        }));
+
+        modelBuilder.Entity<RentalRecord>().HasData(seeder.RentalRecords.Select(r => new
+        {
+            r.Id,
+            r.RenterId,
+            r.BikeId,
+            r.StartTime,
+            r.Duration
+        }));
     }
 }

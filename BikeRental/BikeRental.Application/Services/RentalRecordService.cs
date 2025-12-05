@@ -93,38 +93,44 @@ public class RentalRecordService(
     public Task<bool> Delete(int dtoId) => rentalRecordRepository.Delete(dtoId);
 
     /// <summary>
-    /// Возвращает запись аренды по идентификатору арендатора
+    /// Возвращает список записей аренды арендатора
     /// </summary>
     /// <param name="renterId">Идентификатор арендатора</param>
-    /// <returns>DTO записи аренды</returns>
-    public async Task<RentalRecordDto> GetRentalRecordByRenterId(int renterId)
+    /// <returns>Список DTO записей аренды</returns>
+    public async Task<IList<RentalRecordDto>> GetRentalRecordsByRenterId(int renterId)
     {
         _ = await renterRepository.Read(renterId)
             ?? throw new KeyNotFoundException($"Арендатор с идентификатором {renterId} не найден");
 
-        var record = (await rentalRecordRepository.ReadAll())
+        var records = (await rentalRecordRepository.ReadAll())
+            .Where(r => r.RenterId == renterId)
             .OrderByDescending(r => r.StartTime)
-            .FirstOrDefault(r => r.RenterId == renterId)
-            ?? throw new KeyNotFoundException($"Запись аренды для арендатора с идентификатором {renterId} не найдена");
+            .ToList();
 
-        return mapper.Map<RentalRecordDto>(record);
+        if (records.Count == 0)
+            throw new KeyNotFoundException($"Записи аренды для арендатора с идентификатором {renterId} не найдены");
+
+        return [.. records.Select(mapper.Map<RentalRecordDto>)];
     }
 
     /// <summary>
-    /// Возвращает запись аренды по идентификатору велосипеда
+    /// Возвращает список записей аренды велосипеда
     /// </summary>
     /// <param name="bikeId">Идентификатор велосипеда</param>
-    /// <returns>DTO записи аренды</returns>
-    public async Task<RentalRecordDto> GetRentalRecordByBikeId(int bikeId)
+    /// <returns>Список DTO записей аренды</returns>
+    public async Task<IList<RentalRecordDto>> GetRentalRecordsByBikeId(int bikeId)
     {
         _ = await bikeRepository.Read(bikeId)
             ?? throw new KeyNotFoundException($"Велосипед с идентификатором {bikeId} не найден");
 
-        var record = (await rentalRecordRepository.ReadAll())
+        var records = (await rentalRecordRepository.ReadAll())
+            .Where(r => r.BikeId == bikeId)
             .OrderByDescending(r => r.StartTime)
-            .FirstOrDefault(r => r.BikeId == bikeId)
-            ?? throw new KeyNotFoundException($"Запись аренды для велосипеда с идентификатором {bikeId} не найдена");
+            .ToList();
 
-        return mapper.Map<RentalRecordDto>(record);
+        if (records.Count == 0)
+            throw new KeyNotFoundException($"Записи аренды для велосипеда с идентификатором {bikeId} не найдены");
+
+        return [.. records.Select(mapper.Map<RentalRecordDto>)];
     }
 }
