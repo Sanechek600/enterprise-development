@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRental.Tests", "BikeRen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRental.Infrastructure.EfCore", "BikeRental.Infrastructure.EfCore\BikeRental.Infrastructure.EfCore.csproj", "{3A77A620-C498-4033-801D-0EBD023050BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRental.Application.Contracts", "BikeRental.Application.Contracts\BikeRental.Application.Contracts.csproj", "{EB6F5850-FCDD-4178-945D-3AD815AED349}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{3A77A620-C498-4033-801D-0EBD023050BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A77A620-C498-4033-801D-0EBD023050BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A77A620-C498-4033-801D-0EBD023050BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB6F5850-FCDD-4178-945D-3AD815AED349}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB6F5850-FCDD-4178-945D-3AD815AED349}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB6F5850-FCDD-4178-945D-3AD815AED349}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB6F5850-FCDD-4178-945D-3AD815AED349}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
