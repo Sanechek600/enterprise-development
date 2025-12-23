@@ -10,7 +10,12 @@ using BikeRental.Domain.Data;
 using BikeRental.Domain.Models;
 using BikeRental.Infrastructure.EfCore;
 using BikeRental.Infrastructure.EfCore.Repositories;
+using BikeRental.Infrastructure.Kafka.Configuration;
+using BikeRental.Infrastructure.Kafka.Consumers;
+using BikeRental.Infrastructure.Kafka.Serialization;
+using Confluent.Kafka;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,6 +40,29 @@ builder.Services.AddTransient<IRepository<RentalRecord, int>, RentalRecordReposi
 builder.Services.AddTransient<IRepository<Renter, int>, RenterRepository>();
 
 builder.AddSqlServerDbContext<BikeRentalDbContext>("Database");
+
+builder.Services.Configure<KafkaConsumerOptions>(builder.Configuration.GetSection(KafkaConsumerOptions.SectionName));
+
+builder.Services.AddSingleton(sp =>
+{
+    var options = sp.GetRequiredService<IOptions<KafkaConsumerOptions>>().Value;
+    var connectionString = builder.Configuration.GetConnectionString("kafka");
+
+    var config = new ConsumerConfig
+    {
+        BootstrapServers = connectionString,
+        GroupId = options.GroupId,
+        AutoOffsetReset = AutoOffsetReset.Earliest,
+        EnableAutoCommit = false
+    };
+
+    return new ConsumerBuilder<int, RentalRecordCreateUpdateDto>(config)
+        .SetKeyDeserializer(new JsonKeyDeserializer<int>())
+        .SetValueDeserializer(new JsonValueDeserializer<RentalRecordCreateUpdateDto>())
+        .Build();
+});
+
+builder.Services.AddHostedService<RentalRecordConsumerService>();
 
 builder.Services.AddControllers().AddJsonOptions(o =>
 {
