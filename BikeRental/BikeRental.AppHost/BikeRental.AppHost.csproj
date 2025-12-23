@@ -12,11 +12,13 @@
 
   <ItemGroup>
     <PackageReference Include="Aspire.Hosting.AppHost" Version="13.0.2" />
+    <PackageReference Include="Aspire.Hosting.Kafka" Version="13.0.2" />
     <PackageReference Include="Aspire.Hosting.SqlServer" Version="13.0.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BikeRental.Api.Host\BikeRental.Api.Host.csproj" />
+    <ProjectReference Include="..\BikeRental.Generator.Kafka.Host\BikeRental.Generator.Kafka.Host.csproj" />
   </ItemGroup>
 
 </Project>
